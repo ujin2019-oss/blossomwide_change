@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="벚꽃, 버스킹 공연, 쇼핑 혜택을 한 번에 즐기는 롯데월드몰 봄축제 안내 페이지입니다.">
+    <title>롯데월드몰 봄축제</title>
+    <style>
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --pink: #f45d86;
+            --pink-dark: #e43d6c;
+            --pink-light: #fff0f5;
+            --cream: #fffaf6;
+            --ink: #202026;
+            --muted: #72727d;
+            --line: rgba(244, 93, 134, 0.18);
+            --shadow: 0 18px 50px rgba(207, 71, 112, 0.14);
+            --inner: min(1180px, calc(100% - 40px));
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Pretendard', Arial, sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        button,
+        audio {
+            font: inherit;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 110px 20px 80px;
+            isolation: isolate;
+        }
+
+        .hero-bg img,
+        .flower-frame img {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-bg .bg-front {
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-bg .bg-soft {
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.72;
+            z-index: -3;
+        }
+
+        .flower-frame .flower-bl {
+            left: 0;
+            bottom: 0;
+            max-width: min(42vw, 560px);
+            animation: floatLeft 2s ease both;
+        }
+
+        .flower-frame .flower-tl {
+            left: 0;
+            top: 0;
+            max-width: min(34vw, 440px);
+            animation: floatLeft 2s ease both;
+        }
+
+        .flower-frame .flower-tr {
+            right: 0;
+            top: 0;
+            max-width: min(34vw, 440px);
+            animation: floatRight 2s ease both;
+        }
+
+        .flower-frame .flower-br {
+            right: 0;
+            bottom: 0;
+            max-width: min(42vw, 560px);
+            animation: floatRight 2s ease both;
+        }
+
+        @keyframes floatLeft {
+            from { transform: translateX(-50px); opacity: 0.65; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes floatRight {
+            from { transform: translateX(50px); opacity: 0.65; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .petals {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .petals::before,
+        .petals::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-repeat: repeat-y;
+            background-position: center top;
+            opacity: 0.72;
+        }
+
+        .petals::before {
+            background-image: url("image/petals_0.png");
+            background-size: 100%;
+            animation: petalsFall 12s linear infinite;
+        }
+
+        .petals::after {
+            background-image: url("image/petals_00.png");
+            background-size: 80%;
+            animation: petalsFall 9s linear infinite;
+            opacity: 0.42;
+        }
+
+        @keyframes petalsFall {
+            from { background-position: center 0; }
+            to { background-position: center 900px; }
+        }
+
+        .site-header {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--inner);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 26px 0;
+            z-index: 5;
+        }
+
+        .logo img {
+            width: 116px;
+            display: block;
+        }
+
+        .gnb {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .gnb a {
+            display: block;
+            padding: 12px 18px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+        }
+
+        .header-audio {
+            width: 210px;
+            height: 34px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            width: min(860px, 100%);
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: var(--pink-dark);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .hero-title {
+            margin: 0;
+            font-size: clamp(42px, 7vw, 86px);
+            line-height: 1.08;
+            font-weight: 700;
+            color: #1f2026;
+            text-wrap: balance;
+        }
+
+        .hero-title span {
+            color: var(--pink-dark);
+        }
+
+        .hero-copy {
+            margin: 22px auto 0;
+            max-width: 680px;
+            color: #42424c;
+            font-size: clamp(18px, 2vw, 25px);
+            line-height: 1.55;
+            font-weight: 600;
+        }
+
+        .hero-date {
+            margin: 18px 0 0;
+            color: #55545f;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .hero-actions,
+        .section-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 24px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 12px 28px rgba(244, 93, 134, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(244, 93, 134, 0.28);
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(135deg, #f76d94, #ef4776);
+        }
+
+        .btn-secondary {
+            color: var(--pink-dark);
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(244, 93, 134, 0.22);
+        }
+
+        .section {
+            position: relative;
+            padding: 92px 0;
+            overflow: hidden;
+        }
+
+        .section::before,
+        .section::after {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background: url("image/petals.png") center / contain no-repeat;
+            opacity: 0.22;
+            pointer-events: none;
+        }
+
+        .section::before {
+            left: -36px;
+            top: 70px;
+        }
+
+        .section::after {
+            right: -30px;
+            bottom: 50px;
+            transform: rotate(35deg);
+        }
+
+        .section-white {
+            background: #fff;
+        }
+
+        .section-pink {
+            background: linear-gradient(180deg, #fff4f7 0%, #ffe8ef 100%);
+        }
+
+        .section-inner {
+            position: relative;
+            z-index: 1;
+            width: var(--inner);
+            margin: 0 auto;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-kicker {
+            margin: 0 0 10px;
+            color: var(--pink);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 46px);
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--ink);
+            text-wrap: balance;
+        }
+
+        .section-desc {
+            margin: 14px auto 0;
+            max-width: 640px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .summary-strip {
+            margin-top: -62px;
+            padding-top: 0;
+            background: linear-gradient(180deg, transparent 0, transparent 62px, #fff 62px, #fff 100%);
+        }
+
+        .summary-card {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .summary-item {
+            min-height: 150px;
+            padding: 28px 24px;
+            background: #fff;
+        }
+
+        .summary-icon,
+        .reason-icon,
+        .event-icon,
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            margin-bottom: 16px;
+            border-radius: 50%;
+            color: var(--pink-dark);
+            background: #ffe7ef;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .summary-item strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .summary-item p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .reason-card {
+            min-height: 270px;
+            padding: 42px 32px;
+            text-align: center;
+            border-right: 1px solid var(--line);
+        }
+
+        .reason-card:last-child {
+            border-right: 0;
+        }
+
+        .reason-card h3,
+        .benefit-card h3,
+        .artist-card h3,
+        .event-card h3,
+        .step-card h3 {
+            margin: 0 0 14px;
+            font-size: 22px;
+            line-height: 1.35;
+        }
+
+        .reason-card p,
+        .benefit-card p,
+        .artist-card p,
+        .event-card p,
+        .step-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .schedule-line {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 34px;
+        }
+
+        .schedule-dot {
+            position: relative;
+            padding: 20px 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 14px 34px rgba(207, 71, 112, 0.1);
+        }
+
+        .schedule-dot span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--pink-dark);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .schedule-dot strong {
+            display: block;
+            font-size: 21px;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 26px;
+            color: #656571;
+            font-size: 14px;
+        }
+
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid var(--line);
+        }
+
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .artist-card,
+        .benefit-card,
+        .event-card,
+        .step-card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .artist-image {
+            height: 210px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .artist-image.one {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.08)), url("image/bg1.png");
+        }
+
+        .artist-image.two {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.08)), url("image/tower.png");
+        }
+
+        .artist-image.three {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.08)), url("image/bg00.png");
+        }
+
+        .artist-image.four {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.08)), url("image/bg0.png");
+        }
+
+        .artist-body {
+            position: relative;
+            min-height: 145px;
+            padding: 28px 24px 26px;
+        }
+
+        .date-badge {
+            position: absolute;
+            top: -18px;
+            left: 22px;
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 0 14px;
+            border-radius: 999px;
+            color: #fff;
+            background: var(--pink);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .benefit-card {
+            min-height: 250px;
+            padding: 34px;
+        }
+
+        .benefit-card.featured {
+            display: grid;
+            grid-template-columns: 1fr 90px;
+            gap: 20px;
+            align-items: center;
+            color: #fff;
+            background: linear-gradient(135deg, #202026, #61616c);
+        }
+
+        .benefit-card.featured p {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .benefit-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        .benefit-card.featured .benefit-label {
+            color: #ffd6e2;
+        }
+
+        .benefit-number {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 58px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .coupon-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.16);
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .event-layout {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .photo-card {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 28px;
+            align-items: center;
+            padding: 34px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .photo-card h3 {
+            margin: 0 0 14px;
+            font-size: 24px;
+        }
+
+        .photo-card p {
+            margin: 0 0 22px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .photo-image {
+            min-height: 240px;
+            border-radius: 8px;
+            background: #ffe6ed url("image/bg1.png") center / cover no-repeat;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .event-card {
+            min-height: 240px;
+            padding: 34px 24px;
+            text-align: center;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .step-card {
+            position: relative;
+            min-height: 220px;
+            padding: 34px 28px;
+        }
+
+        .step-number {
+            width: 46px;
+            height: 46px;
+            font-size: 18px;
+        }
+
+        .notice-wrap {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 34px;
+            align-items: start;
+            margin-top: 52px;
+            padding-top: 42px;
+            border-top: 1px solid var(--line);
+        }
+
+        .notice-box h3 {
+            margin: 0 0 16px;
+            font-size: 22px;
+        }
+
+        .notice-box li {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .final-cta {
+            padding: 88px 0;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #ef7196, #f25a86 52%, #ec86a6);
+        }
+
+        .final-cta h2 {
+            margin: 0;
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            margin: 16px auto 0;
+            max-width: 620px;
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .final-cta .btn {
+            margin-top: 30px;
+            color: var(--pink-dark);
+            background: #fff;
+        }
+
+        .site-footer {
+            padding: 34px 0;
+            color: rgba(255, 255, 255, 0.78);
+            background: #ed6f95;
+        }
+
+        .footer-inner {
+            width: var(--inner);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .footer-brand {
+            margin: 0 0 8px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .footer-inner p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .sns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sns a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            color: #ed6f95;
+            background: #fff;
+            font-weight: 700;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media (max-width: 980px) {
+            :root {
+                --inner: min(100% - 28px, 720px);
+            }
+
+            .site-header {
+                align-items: flex-start;
+                padding-top: 18px;
+            }
+
+            .gnb,
+            .header-audio {
+                display: none;
+            }
+
+            .summary-card,
+            .reason-grid,
+            .schedule-line,
+            .artist-grid,
+            .benefit-grid,
+            .event-layout,
+            .event-grid,
+            .process-grid,
+            .notice-wrap {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .reason-card {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .reason-card:last-child {
+                grid-column: 1 / -1;
+                border-bottom: 0;
+            }
+
+            .event-layout,
+            .notice-wrap {
+                gap: 20px;
+            }
+
+            .photo-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --inner: calc(100% - 24px);
+            }
+
+            .hero {
+                min-height: 100svh;
+                padding: 92px 12px 58px;
+            }
+
+            .logo img {
+                width: 96px;
+            }
+
+            .flower-frame .flower-bl,
+            .flower-frame .flower-br {
+                max-width: 64vw;
+            }
+
+            .flower-frame .flower-tl,
+            .flower-frame .flower-tr {
+                max-width: 48vw;
+            }
+
+            .hero-title {
+                font-size: clamp(36px, 11vw, 44px);
+            }
+
+            .hero-copy {
+                font-size: 16px;
+                line-height: 1.65;
+            }
+
+            .hero-date {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .btn {
+                width: 100%;
+                min-height: 50px;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .section-head {
+                margin-bottom: 30px;
+            }
+
+            .section-title {
+                font-size: clamp(28px, 8vw, 34px);
+            }
+
+            .section-desc {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .summary-strip {
+                margin-top: 0;
+                padding-top: 46px;
+                background: #fff;
+            }
+
+            .summary-card,
+            .reason-grid,
+            .schedule-line,
+            .artist-grid,
+            .benefit-grid,
+            .event-layout,
+            .event-grid,
+            .process-grid,
+            .notice-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-item,
+            .benefit-card,
+            .event-card,
+            .step-card,
+            .photo-card {
+                padding: 28px 22px;
+            }
+
+            .reason-card {
+                min-height: auto;
+                padding: 34px 22px;
+            }
+
+            .schedule-dot {
+                padding: 18px;
+            }
+
+            .meta-row {
+                justify-content: stretch;
+            }
+
+            .meta-pill {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .artist-image {
+                height: 190px;
+            }
+
+            .benefit-card.featured {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-image {
+                min-height: 190px;
+            }
+
+            .final-cta {
+                padding: 68px 0;
+            }
+
+            .final-cta h2 br {
+                display: none;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero" id="top">
+            <header class="site-header" aria-label="주요 메뉴">
+                <a class="logo" href="#top" aria-label="롯데월드몰 봄축제 홈">
+                    <img src="image/logo.png" alt="LOTTE WORLD MALL">
+                </a>
+                <nav>
+                    <ul class="gnb">
+                        <li><a href="#reasons">축제 소개</a></li>
+                        <li><a href="#busking">버스킹</a></li>
+                        <li><a href="#benefits">쇼핑 혜택</a></li>
+                        <li><a href="#events">이벤트</a></li>
+                    </ul>
+                </nav>
+                <audio class="header-audio" src="audio/springend.mp3" controls aria-label="봄축제 배경음악"></audio>
+            </header>
+
+            <div class="hero-bg" aria-hidden="true">
+                <img class="bg-soft" src="image/bg00.png" alt="">
+                <img class="bg-front" src="image/bg0.png" alt="">
+            </div>
+            <div class="flower-frame" aria-hidden="true">
+                <img class="flower-bl" src="image/flower_bl.png" alt="">
+                <img class="flower-tl" src="image/flower_tl.png" alt="">
+                <img class="flower-tr" src="image/flower_tr.png" alt="">
+                <img class="flower-br" src="image/flower_br.png" alt="">
+            </div>
+            <div class="petals" aria-hidden="true"></div>
+
+            <div class="hero-content">
+                <p class="eyebrow">Spring in Lotte World Mall</p>
+                <h1 class="hero-title">벚꽃도 보고<br>공연도 보고<br><span>쇼핑 혜택까지</span></h1>
+                <p class="hero-copy">잠실 롯데월드몰에서 즐기는 봄축제. 무료 버스킹 공연, 포토존 이벤트, 쇼핑 프로모션을 한 번에 만나보세요.</p>
+                <p class="hero-date">2026.04.11 토 - 04.19 일 · 서울 잠실 롯데월드몰</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#busking">공연 일정 보기</a>
+                    <a class="btn btn-secondary" href="#events">행사 참여하기</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section summary-strip" aria-labelledby="summary-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">VISIT GUIDE</p>
+                    <h2 class="section-title" id="summary-title">방문 전 꼭 확인하세요</h2>
+                </div>
+                <div class="summary-card">
+                    <article class="summary-item">
+                        <span class="summary-icon" aria-hidden="true">01</span>
+                        <strong>언제</strong>
+                        <p>2026.04.11 토요일부터 04.19 일요일까지</p>
+                    </article>
+                    <article class="summary-item">
+                        <span class="summary-icon" aria-hidden="true">02</span>
+                        <strong>어디서</strong>
+                        <p>서울 잠실 롯데월드몰 1F 아트리움 & 야외광장</p>
+                    </article>
+                    <article class="summary-item">
+                        <span class="summary-icon" aria-hidden="true">03</span>
+                        <strong>무엇을</strong>
+                        <p>버스킹 공연, 포토존, 인증샷 이벤트</p>
+                    </article>
+                    <article class="summary-item">
+                        <span class="summary-icon" aria-hidden="true">04</span>
+                        <strong>혜택</strong>
+                        <p>최대 10% 할인과 L.POINT 추가 적립</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-white" id="reasons" aria-labelledby="reason-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">SPRING REASON</p>
+                    <h2 class="section-title" id="reason-title">봄날의 설렘을 더하는 3가지 이유</h2>
+                </div>
+                <div class="reason-grid">
+                    <article class="reason-card">
+                        <span class="reason-icon" aria-hidden="true">♪</span>
+                        <h3>벚꽃 아래 라이브 공연</h3>
+                        <p>유명 버스커들의 공연을 무료로 즐겨보세요. 봄 분위기와 음악을 한 자리에서 만날 수 있습니다.</p>
+                    </article>
+                    <article class="reason-card">
+                        <span class="reason-icon" aria-hidden="true">%</span>
+                        <h3>최대 10% 할인 혜택</h3>
+                        <p>축제 기간에만 받을 수 있는 특별 프로모션으로 쇼핑까지 가볍게 즐기세요.</p>
+                    </article>
+                    <article class="reason-card">
+                        <span class="reason-icon" aria-hidden="true">★</span>
+                        <h3>사진 찍고 경품 받기</h3>
+                        <p>포토존 인증만 해도 다양한 선물을 받을 수 있어요. 봄날의 추억을 남기고 이벤트에 참여하세요.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-pink" id="busking" aria-labelledby="busking-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">SPRING CONCERT</p>
+                    <h2 class="section-title" id="busking-title">공연 일정 한눈에 보기</h2>
+                    <p class="section-desc">내가 가는 날 어떤 공연이 있는지 먼저 확인하세요.</p>
+                </div>
+
+                <div class="schedule-line" aria-label="버스킹 공연 일정">
+                    <div class="schedule-dot"><span>04.11 토</span><strong>정승환</strong></div>
+                    <div class="schedule-dot"><span>04.12 일</span><strong>치즈</strong></div>
+                    <div class="schedule-dot"><span>04.18 토</span><strong>소란</strong></div>
+                    <div class="schedule-dot"><span>04.19 일</span><strong>담솜</strong></div>
+                </div>
+
+                <div class="meta-row">
+                    <span class="meta-pill">장소: 월드몰 1F 아트리움 & 야외광장</span>
+                    <span class="meta-pill">시간: 14:00 / 16:00 / 18:00</span>
+                    <span class="meta-pill">무료 관람</span>
+                </div>
+
+                <div class="artist-grid">
+                    <article class="artist-card">
+                        <div class="artist-image one" aria-hidden="true"></div>
+                        <div class="artist-body">
+                            <span class="date-badge">04.11 토</span>
+                            <h3>정승환</h3>
+                            <p>감미로운 목소리의 싱어송라이터</p>
+                        </div>
+                    </article>
+                    <article class="artist-card">
+                        <div class="artist-image two" aria-hidden="true"></div>
+                        <div class="artist-body">
+                            <span class="date-badge">04.12 일</span>
+                            <h3>치즈</h3>
+                            <p>포근한 감성의 보컬리스트</p>
+                        </div>
+                    </article>
+                    <article class="artist-card">
+                        <div class="artist-image three" aria-hidden="true"></div>
+                        <div class="artist-body">
+                            <span class="date-badge">04.18 토</span>
+                            <h3>소란</h3>
+                            <p>따뜻한 위로의 밴드 사운드</p>
+                        </div>
+                    </article>
+                    <article class="artist-card">
+                        <div class="artist-image four" aria-hidden="true"></div>
+                        <div class="artist-body">
+                            <span class="date-badge">04.19 일</span>
+                            <h3>담솜</h3>
+                            <p>아름다운 듀오의 달콤한 하모니</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="section-actions">
+                    <a class="btn btn-primary" href="#events">공연 보고 이벤트 참여하기</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-white" id="benefits" aria-labelledby="benefit-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">SPRING BENEFIT</p>
+                    <h2 class="section-title" id="benefit-title">가장 인기 있는 쇼핑 혜택 TOP3</h2>
+                    <p class="section-desc">많은 혜택을 길게 읽지 않아도 핵심만 바로 확인할 수 있게 정리했습니다.</p>
+                </div>
+                <div class="benefit-grid">
+                    <article class="benefit-card featured">
+                        <div>
+                            <span class="benefit-label">L.POINT</span>
+                            <span class="benefit-number">10%</span>
+                            <h3>할인 쿠폰</h3>
+                            <p>축제 기간 최대 10% 할인 쿠폰 제공</p>
+                        </div>
+                        <span class="coupon-download">쿠폰<br>받기</span>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-label">CARD BENEFIT</span>
+                        <span class="benefit-number">10%</span>
+                        <h3>카드사 추가 할인</h3>
+                        <p>제휴 카드 결제 시 최대 10% 추가 할인</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-label">POINT SAVE</span>
+                        <span class="benefit-number">5%</span>
+                        <h3>L.POINT 추가 적립</h3>
+                        <p>행사 매장 구매 금액의 최대 5% 적립</p>
+                    </article>
+                </div>
+                <div class="section-actions">
+                    <a class="btn btn-secondary" href="#summary-title">방문 정보 다시 보기</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-pink" id="events" aria-labelledby="event-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">PHOTO ZONE & EVENT</p>
+                    <h2 class="section-title" id="event-title">사진 찍고 선물 받으세요</h2>
+                    <p class="section-desc">포토존 촬영부터 SNS 업로드, 경품 응모까지 행동 순서를 바로 알 수 있게 구성했습니다.</p>
+                </div>
+                <div class="event-layout">
+                    <article class="photo-card">
+                        <div>
+                            <h3>벚꽃 포토존</h3>
+                            <p>롯데월드몰 곳곳에 마련된 봄빛 포토존에서 인생샷을 남겨보세요.</p>
+                            <a class="btn btn-secondary" href="#participate">참여 방법 보기</a>
+                        </div>
+                        <div class="photo-image" aria-hidden="true"></div>
+                    </article>
+                    <div class="event-grid">
+                        <article class="event-card">
+                            <span class="event-icon" aria-hidden="true">1</span>
+                            <h3>포토존 촬영</h3>
+                            <p>벚꽃 포토존에서 사진을 찍어주세요.</p>
+                        </article>
+                        <article class="event-card">
+                            <span class="event-icon" aria-hidden="true">2</span>
+                            <h3>SNS 업로드</h3>
+                            <p>필수 해시태그와 함께 SNS에 올려주세요.</p>
+                        </article>
+                        <article class="event-card">
+                            <span class="event-icon" aria-hidden="true">3</span>
+                            <h3>경품 응모</h3>
+                            <p>업로드 화면을 인증하고 경품에 응모하세요.</p>
+                        </article>
+                        <article class="event-card">
+                            <span class="event-icon" aria-hidden="true">★</span>
+                            <h3>선물 받기</h3>
+                            <p>추첨을 통해 봄맞이 선물을 드립니다.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-white" id="participate" aria-labelledby="participate-title">
+            <div class="section-inner">
+                <div class="section-head">
+                    <p class="section-kicker">HOW TO PARTICIPATE</p>
+                    <h2 class="section-title" id="participate-title">참여 방법</h2>
+                </div>
+                <div class="process-grid">
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">1</span>
+                        <h3>행사 확인</h3>
+                        <p>방문 날짜와 공연 일정을 먼저 확인합니다.</p>
+                    </article>
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">2</span>
+                        <h3>현장 방문</h3>
+                        <p>잠실 롯데월드몰 현장에서 포토존과 공연을 즐깁니다.</p>
+                    </article>
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">3</span>
+                        <h3>참여 & 인증</h3>
+                        <p>이벤트 안내에 따라 인증하면 경품 응모가 완료됩니다.</p>
+                    </article>
+                </div>
+                <div class="notice-wrap">
+                    <div class="notice-box">
+                        <h3>이번 주말, 롯데월드몰에서 봄을 즐겨보세요</h3>
+                        <p class="section-desc">공연 일정과 이벤트 참여 방법을 확인하고 방문하면 축제를 더 알차게 즐길 수 있습니다.</p>
+                    </div>
+                    <div class="notice-box">
+                        <h3>유의사항</h3>
+                        <ul>
+                            <li>모든 공연은 무료 관람 가능합니다.</li>
+                            <li>우천 시 일부 일정이 변경될 수 있습니다.</li>
+                            <li>이벤트 경품은 당첨자 개별 안내됩니다.</li>
+                            <li>자세한 내용은 현장 안내를 확인해주세요.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta" aria-labelledby="final-title">
+            <div class="section-inner">
+                <h2 id="final-title">벚꽃, 공연, 쇼핑 혜택까지<br>봄날의 하루를 완성하세요</h2>
+                <p>2026년 4월 11일부터 19일까지, 잠실 롯데월드몰에서 봄축제가 열립니다.</p>
+                <a class="btn" href="#top">행사 일정 다시 보기</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <p class="footer-brand">LOTTE WORLD MALL</p>
+                <p>서울특별시 송파구 올림픽로 300 롯데월드몰<br>© LOTTE. All rights reserved.</p>
+            </div>
+            <div class="sns" aria-label="SNS 링크">
+                <a href="#" aria-label="Instagram">I</a>
+                <a href="#" aria-label="YouTube">Y</a>
+                <a href="#" aria-label="Facebook">F</a>
+                <a href="#" aria-label="Blog">B</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

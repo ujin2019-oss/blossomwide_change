@@ -460,6 +460,61 @@
             background: #fff;
         }
 
+        /* ===== VISIT GUIDE: falling cherry-blossom petals (SVG) ===== */
+        .guide-petals {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .guide-petals .gp-sprite {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .gp {
+            position: absolute;
+            top: -12%;
+            left: var(--x, 50%);
+            width: calc(20px * var(--s, 1));
+            height: calc(24px * var(--s, 1));
+            opacity: var(--op, 0.8);
+            will-change: top, transform;
+            animation:
+                gpFall var(--dur, 12s) linear var(--delay, 0s) infinite,
+                gpSway var(--sway, 5s) ease-in-out var(--delay, 0s) infinite alternate;
+        }
+
+        .gp svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            transform-origin: 50% 50%;
+            filter: drop-shadow(0 3px 4px rgba(228, 61, 108, 0.12));
+            animation: gpFlutter var(--flut, 3s) ease-in-out var(--delay, 0s) infinite;
+        }
+
+        @keyframes gpFall {
+            from { top: -12%; }
+            to   { top: 112%; }
+        }
+
+        @keyframes gpSway {
+            from { transform: translateX(calc(-1 * var(--amp, 16px))); }
+            to   { transform: translateX(var(--amp, 16px)); }
+        }
+
+        @keyframes gpFlutter {
+            0%   { transform: rotate(0deg) scaleX(1); }
+            50%  { transform: rotate(180deg) scaleX(0.32); }
+            100% { transform: rotate(360deg) scaleX(1); }
+        }
+
         .summary-card {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -1214,6 +1269,45 @@
         </section>
 
         <section class="section summary-strip" aria-labelledby="summary-title">
+            <!-- Falling cherry-blossom petals (SVG) -->
+            <div class="guide-petals" aria-hidden="true">
+                <svg class="gp-sprite" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gpGradLight" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#fff2f7"/>
+                            <stop offset="1" stop-color="#f9a8c4"/>
+                        </linearGradient>
+                        <linearGradient id="gpGradDeep" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#ffd9e6"/>
+                            <stop offset="1" stop-color="#f45d86"/>
+                        </linearGradient>
+                        <symbol id="petalLight" viewBox="0 0 20 24">
+                            <path d="M10 23C3.5 20 0.5 12.5 5 4.5 6.6 1.7 8.4 1.4 10 4.2 11.6 1.4 13.4 1.7 15 4.5 19.5 12.5 16.5 20 10 23Z" fill="url(#gpGradLight)"/>
+                        </symbol>
+                        <symbol id="petalDeep" viewBox="0 0 20 24">
+                            <path d="M10 23C3.5 20 0.5 12.5 5 4.5 6.6 1.7 8.4 1.4 10 4.2 11.6 1.4 13.4 1.7 15 4.5 19.5 12.5 16.5 20 10 23Z" fill="url(#gpGradDeep)"/>
+                        </symbol>
+                    </defs>
+                </svg>
+
+                <span class="gp" style="--x:4%;--s:1.1;--dur:13s;--delay:-1s;--sway:5s;--flut:3s;--amp:18px;--op:.8"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:11%;--s:.7;--dur:10s;--delay:-6s;--sway:4s;--flut:2.6s;--amp:14px;--op:.6"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:18%;--s:1.3;--dur:15s;--delay:-3s;--sway:6s;--flut:3.4s;--amp:24px;--op:.85"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:25%;--s:.85;--dur:11s;--delay:-8s;--sway:4.5s;--flut:2.8s;--amp:16px;--op:.7"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:33%;--s:1;--dur:12.5s;--delay:-.5s;--sway:5.5s;--flut:3.1s;--amp:20px;--op:.8"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:41%;--s:.65;--dur:9.5s;--delay:-5s;--sway:3.6s;--flut:2.3s;--amp:12px;--op:.55"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:49%;--s:1.2;--dur:14s;--delay:-10s;--sway:5.2s;--flut:3.5s;--amp:22px;--op:.82"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:57%;--s:.9;--dur:11.5s;--delay:-2.5s;--sway:4.8s;--flut:2.9s;--amp:17px;--op:.72"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:64%;--s:1.35;--dur:15.5s;--delay:-7s;--sway:6s;--flut:3.6s;--amp:26px;--op:.85"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:71%;--s:.75;--dur:10.5s;--delay:-12s;--sway:4.2s;--flut:2.5s;--amp:14px;--op:.6"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:78%;--s:1.05;--dur:13.5s;--delay:-4s;--sway:5.4s;--flut:3.2s;--amp:19px;--op:.8"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:85%;--s:.8;--dur:11s;--delay:-9s;--sway:4.4s;--flut:2.7s;--amp:15px;--op:.68"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:92%;--s:1.15;--dur:14.5s;--delay:-1.8s;--sway:5.6s;--flut:3.3s;--amp:21px;--op:.82"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:96%;--s:.6;--dur:9s;--delay:-6.5s;--sway:3.5s;--flut:2.2s;--amp:10px;--op:.5"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:8%;--s:.95;--dur:12s;--delay:-11s;--sway:5s;--flut:3s;--amp:18px;--op:.75"><svg viewBox="0 0 20 24"><use href="#petalDeep" width="20" height="24"/></svg></span>
+                <span class="gp" style="--x:55%;--s:.7;--dur:10s;--delay:-3.5s;--sway:4s;--flut:2.6s;--amp:13px;--op:.6"><svg viewBox="0 0 20 24"><use href="#petalLight" width="20" height="24"/></svg></span>
+            </div>
+
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">VISIT GUIDE</p>
@@ -1244,7 +1338,7 @@
             </div>
         </section>
 
-        <section class="section section-white" id="reasons" aria-labelledby="reason-title">
+        <section class="section section-white has-petals" id="reasons" aria-labelledby="reason-title">
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">SPRING REASON</p>
@@ -1270,7 +1364,7 @@
             </div>
         </section>
 
-        <section class="section section-pink" id="busking" aria-labelledby="busking-title">
+        <section class="section section-pink has-petals" id="busking" aria-labelledby="busking-title">
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">SPRING CONCERT</p>
@@ -1324,7 +1418,7 @@
             </div>
         </section>
 
-        <section class="section section-white" id="benefits" aria-labelledby="benefit-title">
+        <section class="section section-white has-petals" id="benefits" aria-labelledby="benefit-title">
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">SPRING BENEFIT</p>
@@ -1360,7 +1454,7 @@
             </div>
         </section>
 
-        <section class="section section-pink" id="events" aria-labelledby="event-title">
+        <section class="section section-pink has-petals" id="events" aria-labelledby="event-title">
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">PHOTO ZONE & EVENT</p>
@@ -1402,7 +1496,7 @@
             </div>
         </section>
 
-        <section class="section section-white" id="participate" aria-labelledby="participate-title">
+        <section class="section section-white has-petals" id="participate" aria-labelledby="participate-title">
             <div class="section-inner">
                 <div class="section-head">
                     <p class="section-kicker">HOW TO PARTICIPATE</p>
@@ -1500,6 +1594,46 @@
             btn.addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+        })();
+
+        /* Falling petals in the background: VISIT GUIDE → HOW TO PARTICIPATE */
+        (function () {
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            var sections = document.querySelectorAll('.has-petals');
+            if (!sections.length) return;
+
+            var symbols = ['petalLight', 'petalDeep'];
+            var COUNT = 12;
+
+            function rand(min, max) { return min + Math.random() * (max - min); }
+
+            for (var s = 0; s < sections.length; s++) {
+                var layer = document.createElement('div');
+                layer.className = 'guide-petals';
+                layer.setAttribute('aria-hidden', 'true');
+
+                var petals = '';
+                for (var i = 0; i < COUNT; i++) {
+                    var x = rand(2, 97).toFixed(1);
+                    var sc = rand(0.55, 1.35).toFixed(2);
+                    var dur = rand(9, 16).toFixed(1);
+                    var delay = (-rand(0, 16)).toFixed(1);
+                    var sway = rand(3.5, 6).toFixed(1);
+                    var flut = rand(2.2, 3.7).toFixed(1);
+                    var amp = Math.round(rand(10, 26));
+                    var op = rand(0.5, 0.9).toFixed(2);
+                    var sym = symbols[i % 2];
+                    petals +=
+                        '<span class="gp" style="--x:' + x + '%;--s:' + sc + ';--dur:' + dur +
+                        's;--delay:' + delay + 's;--sway:' + sway + 's;--flut:' + flut +
+                        's;--amp:' + amp + 'px;--op:' + op + '">' +
+                        '<svg viewBox="0 0 20 24"><use href="#' + sym + '" width="20" height="24"/></svg>' +
+                        '</span>';
+                }
+                layer.innerHTML = petals;
+                sections[s].insertBefore(layer, sections[s].firstChild);
+            }
         })();
     </script>
 </body>
